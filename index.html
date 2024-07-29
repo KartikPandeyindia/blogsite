@@ -1,21 +1,60 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <script type="text/javascript" async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_CHTML"></script>
-    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
-    <title>
-        Pandey Notes
-    </title>
-  </head>
-  <body>
-    <h1>Pandey Notes</h1>
-    <sub>Math, Computing and Circuits</sub>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Markdown with MathJax Example</title>
+  <!-- Include MathJax -->
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+  <div id="content"></div>
 
-    <p>
-      Study Notes
-      
-      <li><a href="study/set_theory.html"> set theory</a></li>
+  <!-- Include Marked.js -->
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 
-    </p>
-  </body>
+  <script>
+    const markdownContent = `
+# Sample Article
+
+This is a sample article to demonstrate the integration of **Marked.js** and **MathJax**.
+
+## Markdown Features
+
+- Easy to write
+- Readable format
+- Supports various formatting options
+
+### Code Example
+
+\`\`\`javascript
+function greet(name) {
+  return \`Hello, \${name}!\`;
+}
+console.log(greet('World'));
+\`\`\`
+
+### Mathematical Equations
+
+You can include inline equations like this: \\( E = mc^2 \\).
+
+Or display equations:
+
+\\[
+\\int_0^\\infty e^{-x} \\, dx = 1
+\\]
+
+### Conclusion
+
+Combining Marked.js and MathJax makes it possible to write articles that include both Markdown content and complex mathematical equations easily.
+    `;
+
+    // Parse Markdown and set innerHTML
+    document.getElementById('content').innerHTML = marked.parse(markdownContent);
+
+    // Re-render MathJax to process the equations
+    MathJax.typesetPromise();
+  </script>
+</body>
 </html>
